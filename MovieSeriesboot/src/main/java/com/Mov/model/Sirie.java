@@ -1,11 +1,15 @@
 package com.Mov.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import java.util.Set;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,13 +20,12 @@ public class Sirie {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idSirie;
-    private String titre;
+    private  int idSirie;
+    private  String  titre;
     private String description;
-    private String dateDebut;
-    private String dateFin;
+    private  String dateDebut;
+    private  String  dateFin;
     private String acteurs;
 
-    @ManyToMany(mappedBy = "favoriteSiries")
-    private Set<User> users;
+
 }

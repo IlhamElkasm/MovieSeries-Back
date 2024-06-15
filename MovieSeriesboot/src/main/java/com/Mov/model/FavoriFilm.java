@@ -1,29 +1,27 @@
 package com.Mov.model;
 
-
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Film {
-
+public class FavoriFilm {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private int idFilm;
-    private String dateSortie ;
-    private String acteurs ;
-    private String description ;
-    private String titre;
-    private Float note;
+    private int idFavoriF;
+
+    @ManyToOne
+    @JoinColumn(name = "idFilm")
+    private Film films;
 
 
+    @ManyToOne
+    @JoinColumn(name = "idUser")
+    private Utilisateur user;
 }
