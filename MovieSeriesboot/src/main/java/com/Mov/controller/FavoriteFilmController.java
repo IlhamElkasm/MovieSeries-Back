@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/favoriteFilm")
@@ -14,10 +15,12 @@ public class FavoriteFilmController {
         @Autowired
         private FavoriFilmService favoriFilmService;
 
-        @PostMapping("/add")
-        public FavoriFilm addFavoriteFilm(@RequestParam int userId, @RequestParam int filmId) {
-            return favoriFilmService.addFavoriteFilm(userId, filmId);
-        }
+    @PostMapping("/add")
+    public FavoriFilm addFavoriteFilm(@RequestBody Map<String, Integer> payload) {
+        int idUser = payload.get("idUser");
+        int idFilm = payload.get("idFilm");
+        return favoriFilmService.addFavoriteFilm(idUser, idFilm);
+    }
 
         @GetMapping("/user/{userId}")
         public List<FavoriFilm> getFavoriteFilmsByUser(@PathVariable int userId) {
