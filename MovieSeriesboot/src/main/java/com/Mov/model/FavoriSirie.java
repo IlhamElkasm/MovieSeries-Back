@@ -20,7 +20,7 @@ public class FavoriSirie{
 
         @ManyToOne
         @JoinColumn(name = "idSirie")
-        private Sirie series;
+        private Serie series;
 
         @ManyToOne
         @JoinColumn(name = "idUser")

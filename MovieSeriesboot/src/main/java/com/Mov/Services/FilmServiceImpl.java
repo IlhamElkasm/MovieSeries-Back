@@ -19,8 +19,8 @@ public class FilmServiceImpl implements  FilmService{
     }
 
     @Override
-    public Film getMovieById(int id) {
-        return filmDAO.findById(id).orElse(null);
+    public Film getMovieById(int idFilm) {
+        return filmDAO.findById(idFilm).orElse(null);
     }
 
     @Override
@@ -29,14 +29,14 @@ public class FilmServiceImpl implements  FilmService{
     }
 
     @Override
-    public void deleteMovie(int id) {
-        filmDAO.deleteById(id);
+    public void deleteMovie(int idFilm) {
+        filmDAO.deleteById(idFilm);
     }
 
 
     @Override
-    public Film updateMovie(int id, Film film) {
-        Optional<Film> existingMovie = filmDAO.findById(id);
+    public Film updateMovie(int idFilm, Film film) {
+        Optional<Film> existingMovie = filmDAO.findById(idFilm);
         if (existingMovie.isPresent()) {
             Film updatedMovie = existingMovie.get();
             updatedMovie.setTitre(film.getTitre());
